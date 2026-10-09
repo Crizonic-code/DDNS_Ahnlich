@@ -1,0 +1,20 @@
+{
+  "name": "ddns-ahnlich-web",
+  "version": "1.0.0",
+  "description": "DDNS_Ahnlich Web Panel - Crizonic-code",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "serve -s dist -l 3000"
+  },
+  "dependencies": {
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "axios": "^1.7.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "serve": "^14.2.0"
+  }
+}

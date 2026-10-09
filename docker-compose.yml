@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  pdns:
+    image: ghcr.io/powerdns/pdns:latest-pdns-auth
+    container_name: ddns-pdns
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8081:8081"  # API
+    volumes:
+      - ./pdns.conf:/etc/powerdns/pdns.conf
+      - pdns-data:/var/lib/powerdns
+    environment:
+      - PDNS_API_KEY=${PDNS_API_KEY:-ddns-secret-api-key-change-me}
+    restart: unless-stopped
+
+  api:
+    build: ./api
+    container_name: ddns-api
+    ports:
+      - "8080:8080"
+    environment:
+      - PDNS_API_URL=http://pdns:8081
+      - PDNS_API_KEY=${PDNS_API_KEY:-ddns-secret-api-key-change-me}
+      - ZONE_NAME=${ZONE_NAME:-ddns.dasspec.com}
+      - JWT_SECRET=${JWT_SECRET:-change-this-jwt-secret}
+    volumes:
+      - api-data:/app/data
+    depends_on:
+      - pdns
+    restart: unless-stopped
+
+  web:
+    build: ./web
+    container_name: ddns-web
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URL=http://api:8080
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: ddns-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+      - nginx-data:/var/cache/nginx
+    depends_on:
+      - api
+      - web
+    restart: unless-stopped
+
+volumes:
+  pdns-data:
+  api-data:
+  nginx-data:

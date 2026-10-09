@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+a { color: #64b5f6; }
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+.btn.primary {
+  background: #64b5f6;
+  color: #000;
+}
+.btn.primary:hover { background: #90caf9; }
+.btn.secondary {
+  background: #333;
+  color: #e0e0e0;
+}
+.btn.secondary:hover { background: #444; }
+.btn.small {
+  padding: 6px 12px;
+  font-size: 14px;
+  background: #333;
+  color: #e0e0e0;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Landing */
+.landing {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.landing h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #64b5f6;
+}
+.tagline {
+  font-size: 1.3rem;
+  color: #888;
+  margin-bottom: 30px;
+}
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 40px 0;
+}
+.feature {
+  background: #111;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+.feature h3 { color: #64b5f6; margin-bottom: 8px; }
+.actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 30px 0;
+}
+.example {
+  background: #111;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 30px 0;
+  text-align: left;
+}
+.example pre {
+  background: #000;
+  padding: 15px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 14px;
+}
+footer {
+  margin-top: 40px;
+  color: #555;
+}
+
+/* Auth pages */
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+.auth-box {
+  background: #111;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #222;
+  width: 100%;
+  max-width: 400px;
+}
+.auth-box h2 { margin-bottom: 20px; color: #64b5f6; }
+.field {
+  margin-bottom: 15px;
+  text-align: left;
+}
+.field label {
+  display: block;
+  margin-bottom: 5px;
+  color: #888;
+  font-size: 14px;
+}
+.field input {
+  width: 100%;
+  padding: 10px;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 16px;
+}
+.field input:focus {
+  outline: none;
+  border-color: #64b5f6;
+}
+.auth-links {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.link {
+  background: none;
+  border: none;
+  color: #64b5f6;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+.link:hover { text-decoration: underline; }
+
+/* Dashboard */
+.dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.dashboard header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #222;
+}
+.dashboard header h2 { color: #64b5f6; }
+.dashboard section {
+  margin-bottom: 30px;
+}
+.dashboard h3 {
+  color: #64b5f6;
+  margin-bottom: 10px;
+}
+.api-key code {
+  display: block;
+  background: #000;
+  padding: 12px;
+  border-radius: 4px;
+  word-break: break-all;
+  font-size: 14px;
+}
+.hint {
+  font-size: 13px;
+  color: #666;
+  margin-top: 5px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #222;
+}
+th { color: #64b5f6; }
+.create-hostname form {
+  display: flex;
+  gap: 10px;
+}
+.create-hostname input {
+  flex: 1;
+  padding: 10px;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #e0e0e0;
+}
+.client-examples pre {
+  background: #000;
+  padding: 15px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 13px;
+}
+.error {
+  background: #521;
+  color: #faa;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .landing h1 { font-size: 2rem; }
+  .actions { flex-direction: column; }
+  .create-hostname form { flex-direction: column; }
+}
